@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "87787050087",
+    "project_id": "myapp-fe175",
+    "storage_bucket": "myapp-fe175.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87787050087:android:3b49412b315029cd64b0c2",
+        "android_client_info": {
+          "package_name": "com.example.lezgo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeTCHLuVyyey-xlbDZvk8cP1kMsbBctSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87787050087:android:f5348bbb4e62c93964b0c2",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeTCHLuVyyey-xlbDZvk8cP1kMsbBctSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87787050087:android:430c68424ad2e05864b0c2",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeTCHLuVyyey-xlbDZvk8cP1kMsbBctSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

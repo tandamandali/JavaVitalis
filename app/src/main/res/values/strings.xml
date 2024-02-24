@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="login" />
+    <string name="Register">Register</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="Click_to_Login">click to login</string>
+    <string name="logout">Logout</string>
+    <string name="scan">Scan</string>
+    <string name="select_category">Select Category</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="scan_ingredients">Scan Ingredients</string>
+    <string name="take_image">Take Inage</string>
+</resources>
