@@ -291,7 +291,6 @@ public class Scanner extends AppCompatActivity {
 //        popupMenu.getMenu().add(Menu.NONE,1,1,"Protien");
 //        popupMenu.getMenu().add(Menu.NONE,2,2,"Vitamin");
 //        popupMenu.getMenu().add(Menu.NONE,3,3,"Omega 3");
-        //popupMenu.getMenu().add(Menu.NONE,4,4,"");
 
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
