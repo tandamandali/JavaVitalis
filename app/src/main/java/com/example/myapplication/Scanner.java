@@ -274,14 +274,23 @@ public class Scanner extends AppCompatActivity {
             }
         });
     }
+    String[] arr = {"WHEY PROTEIN", "MASS GAINERS", "MICELLAR CASEIN PROTEIN",
+            "WHEY PROTEIN ISOLATE", "LOW CARB PROTEIN", "PROTEIN RTD SHAKES",
+            "BCAA SUPPLEMENTS", "PLANT PROTEIN", "PRE-WORKOUT",
+            "MEAL REPLACEMENT", "KETOGENIC", "POST-WORKOUT RECOVERY",
+            "AMINO ACIDS", "CREATINE", "FISH OIL OMEGA-3", "PROTEIN BARS",
+            "GREENS"};
+
 
 
     private void showCategoryDialog() {
         PopupMenu popupMenu = new PopupMenu(this, selectCategory);
-
-        popupMenu.getMenu().add(Menu.NONE,1,1,"Protien");
-        popupMenu.getMenu().add(Menu.NONE,2,2,"Vitamin");
-        popupMenu.getMenu().add(Menu.NONE,3,3,"Omega 3");
+        for(int i=0; i<arr.length;i++){
+            popupMenu.getMenu().add(Menu.NONE,i,i,arr[i]);
+        }
+//        popupMenu.getMenu().add(Menu.NONE,1,1,"Protien");
+//        popupMenu.getMenu().add(Menu.NONE,2,2,"Vitamin");
+//        popupMenu.getMenu().add(Menu.NONE,3,3,"Omega 3");
         //popupMenu.getMenu().add(Menu.NONE,4,4,"");
 
         popupMenu.show();
@@ -289,7 +298,7 @@ public class Scanner extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                category = (String) popupMenu.getMenu().getItem(id-1).getTitle();
+                category = (String) popupMenu.getMenu().getItem(id).getTitle();
                 selectCategory.setText(category);
                 popupMenu.dismiss();
                 return false;
