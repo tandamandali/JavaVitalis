@@ -27,6 +27,12 @@ import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -38,9 +44,18 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+
 public class Scanner extends AppCompatActivity {
-    public String Gender;
-    public String category;
+    public String result;
+    private String Gender;
+    private String category;
     private MaterialButton selectGender;
     private MaterialButton selectCategory;
     private MaterialButton generate;
@@ -57,7 +72,7 @@ public class Scanner extends AppCompatActivity {
     private String[] storagePermissions;
     private ProgressDialog progressDialog;
     private TextRecognizer textRecognizer;
-
+    private String url,data;
 
 
 
@@ -83,6 +98,39 @@ public class Scanner extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(Objects.equals(Gender, null) || Objects.equals(category, null)){
+                    Toast.makeText(Scanner.this, "Select Gender and Category", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    result = jsonObject.toString();
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }){
+
+                    protected Map<String,String> getParam(){
+                        Map<String,String> params = new HashMap<String,String>();
+                        params.put("ingredient_list", data);
+                        params.put("gender", Gender);
+                        params.put("category", category);
+                        return params;
+                    }
+                };
+                RequestQueue queue = Volley.newRequestQueue(Scanner.this);
+                queue.add(stringRequest);
             }
         });
 
@@ -138,8 +186,10 @@ public class Scanner extends AppCompatActivity {
                         public void onSuccess(Text text){
                             progressDialog.dismiss();
                             String recognizedText = text.getText();
+
                             Log.d(TAG,"onSuccess: Scanned"+recognizedText);
                             scannedIngredients.setText(recognizedText);
+                            data = scannedIngredients.getText().toString();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -199,21 +249,23 @@ public class Scanner extends AppCompatActivity {
 
         popupMenu.getMenu().add(Menu.NONE,1,1,"Male");
         popupMenu.getMenu().add(Menu.NONE,2,2,"Female");
-        popupMenu.getMenu().add(Menu.NONE,2,2,"");
+       // popupMenu.getMenu().add(Menu.NONE,3,3,"");
 
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                if(id== 1){
+                if(id == 1){
 
-                    Gender = popupMenu.getMenu().getItem(id).getTitle().toString();
+                    Gender = String.valueOf(popupMenu.getMenu().getItem(id-1).getTitle());
+                    selectGender.setText(Gender);
                     popupMenu.dismiss();
 
                 }else if(id == 2){
 
-                    Gender = popupMenu.getMenu().getItem(id).getTitle().toString();
+                    Gender = String.valueOf(popupMenu.getMenu().getItem(id-1).getTitle());
+                    selectGender.setText(Gender);
                     popupMenu.dismiss();
                 }else{
                     popupMenu.dismiss();
@@ -229,14 +281,16 @@ public class Scanner extends AppCompatActivity {
 
         popupMenu.getMenu().add(Menu.NONE,1,1,"Protien");
         popupMenu.getMenu().add(Menu.NONE,2,2,"Vitamin");
-        popupMenu.getMenu().add(Menu.NONE,2,2,"Omega 3");
+        popupMenu.getMenu().add(Menu.NONE,3,3,"Omega 3");
+        //popupMenu.getMenu().add(Menu.NONE,4,4,"");
 
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                category = popupMenu.getMenu().getItem(id).getTitle().toString();
+                category = (String) popupMenu.getMenu().getItem(id-1).getTitle();
+                selectCategory.setText(category);
                 popupMenu.dismiss();
                 return false;
             }
