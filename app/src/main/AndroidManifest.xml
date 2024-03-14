@@ -21,11 +21,38 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".MMultivitamins"
+            android:exported="true" />
+        <activity
+            android:name=".MJointSupportSupplements"
+            android:exported="true" />
+        <activity
+            android:name=".MMassGainers"
+            android:exported="true" />
+        <activity
+            android:name=".MProbiotics"
+            android:exported="true" />
+        <activity
+            android:name=".MPreWorkout"
+            android:exported="true" />
+        <activity
+            android:name=".MProtienPowder"
+            android:exported="true" />
+        <activity
+            android:name=".MCreatine"
+            android:exported="true" />
+        <activity
+            android:name=".Output"
+            android:exported="true" />
+        <activity
+            android:name=".BrandActivity"
+            android:exported="true"/>
+        <activity
             android:name=".Scanner"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Register"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Login"
             android:exported="true">

@@ -12,8 +12,10 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -25,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -51,9 +54,11 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Scanner extends AppCompatActivity {
-    public String result;
+    public String res;
     private String Gender;
     private String category;
     private MaterialButton selectGender;
@@ -66,6 +71,7 @@ public class Scanner extends AppCompatActivity {
     private EditText scannedIngredients;
     private static final String TAG = "MAIN_TAG";
     private Uri imageUri = null;
+    private boolean read = false;
     private static final int CAMERA_REQUEST_CODE = 100;
     private static final int STORAGE_REQUEST_CODE = 101;
     private String[] cameraPermissions;
@@ -93,6 +99,10 @@ public class Scanner extends AppCompatActivity {
         selectGender = findViewById(R.id.Gender);
         selectCategory = findViewById(R.id.Category);
         generate = findViewById(R.id.generateRec);
+        url = "http://192.168.29.94:5000/recommend";
+
+
+
 
         generate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,22 +112,154 @@ public class Scanner extends AppCompatActivity {
                     Toast.makeText(Scanner.this, "Select Gender and Category", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                if(!read){
+                    Toast.makeText(Scanner.this, "Scan Ingredients!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                progressDialog.setMessage("Recommending...");
+                progressDialog.show();
+                //MyDialog.showDialog(Scanner.this, "Please wait..", "Recommending....");
+
+
+
+
+
+                Timer timer = new Timer();
+
+
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        switch(Gender) {
+                            case "Male":
+                                // Code for Male gender
+
+                                switch(category) {
+                                    case "Protein Powder":
+                                        Intent intent = new Intent(Scanner.this, MProtienPowder.class);
+                                        startActivity(intent);
+                                        break;
+                                    case "Creatine":
+                                        Intent cret = new Intent(Scanner.this, MCreatine.class);
+                                        startActivity(cret);
+                                        break;
+                                    case "Multivitamins":
+                                        Intent mul = new Intent(Scanner.this, MMultivitamins.class);
+                                        startActivity(mul);
+                                        break;
+                                    case "Fish Oil":
+                                        Intent out = new Intent(Scanner.this, Output.class);
+                                        startActivity(out);
+                                        break;
+                                    case "Pre-Workout Supplements":
+                                        Intent pre = new Intent(Scanner.this, MPreWorkout.class);
+                                        startActivity(pre);
+                                        break;
+                                    case "Probiotics":
+                                        Intent pro = new Intent(Scanner.this, MProbiotics.class);
+                                        startActivity(pro);
+                                        break;
+                                    case "Mass Gainers":
+                                        Intent mass = new Intent(Scanner.this, MMassGainers.class);
+                                        startActivity(mass);
+                                        break;
+                                    case "Joint Support Supplements":
+                                        Intent join = new Intent(Scanner.this, MJointSupportSupplements.class);
+                                        startActivity(join);
+                                        break;
+                                    default:
+                                        // Handle invalid category
+                                        break;
+                                }
+
+
+
+
+                                progressDialog.dismiss();
+                                break;
+                            case "Female":
+                                // Code for Female gender
+
+
+//                                switch (category) {
+//                                    case "Protein Powder":
+//                                        Intent intent = new Intent(Scanner.this, ProtienPowder.class);
+//                                        startActivity(intent);
+//                                        break;
+//                                    case "Creatine":
+//                                        Intent cret = new Intent(Scanner.this, MCreatine.class);
+//                                        startActivity(cret);
+//                                        break;
+//                                    case "Multivitamins":
+//                                        Intent mul = new Intent(Scanner.this, MMultivitamins.class);
+//                                        startActivity(mul);
+//                                        break;
+//                                    case "Fish Oil":
+//                                        Intent out = new Intent(Scanner.this, Output.class);
+//                                        startActivity(out);
+//                                        break;
+//                                    case "Pre-Workout Supplements":
+//                                        Intent pre = new Intent(Scanner.this, MPreWorkout.class);
+//                                        startActivity(pre);
+//                                        break;
+//                                    case "Probiotics":
+//                                        Intent pro = new Intent(Scanner.this, MProbiotics.class);
+//                                        startActivity(pro);
+//                                        break;
+//                                    case "Mass Gainers":
+//                                        Intent mass = new Intent(Scanner.this, MMassGainers.class);
+//                                        startActivity(mass);
+//                                        break;
+//                                    case "Joint Support Supplements":
+//                                        Intent join = new Intent(Scanner.this, MJointSupportSupplements.class);
+//                                        startActivity(join);
+//                                        break;
+//                                    default:
+//                                        // Handle invalid category
+//                                        break;
+//                                }
+
+                                progressDialog.dismiss();
+                                break;
+                            default:
+                                // Code for handling invalid gender selection
+                        }
+
+
+
+//                        Intent intent = new Intent(getApplicationContext(), Output.class);
+//
+//                        startActivity(intent);
+                        // Your code to be delayed
+                    }
+                }, 5000); // Delay in milliseconds
+
+
+
+
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
-                                    result = jsonObject.toString();
+                                    res = jsonObject.toString();
+                                    System.out.println(res);
+                                    scannedIngredients.setText(res);
                                 } catch (JSONException e) {
                                     throw new RuntimeException(e);
+
                                 }
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-
+                                Log.d(TAG,"onFailure: error"+error.getMessage());
+                                //Toast.makeText(Scanner.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }){
 
@@ -133,6 +275,11 @@ public class Scanner extends AppCompatActivity {
                 queue.add(stringRequest);
             }
         });
+
+
+
+
+
 
         selectCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,10 +333,12 @@ public class Scanner extends AppCompatActivity {
                         public void onSuccess(Text text){
                             progressDialog.dismiss();
                             String recognizedText = text.getText();
-
+                            read = true;
                             Log.d(TAG,"onSuccess: Scanned"+recognizedText);
                             scannedIngredients.setText(recognizedText);
-                            data = scannedIngredients.getText().toString();
+                            data = scannedIngredients.getText().toString().trim()
+                                    .replaceAll("\\s+", " ");
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -274,12 +423,19 @@ public class Scanner extends AppCompatActivity {
             }
         });
     }
-    String[] arr = {"WHEY PROTEIN", "MASS GAINERS", "MICELLAR CASEIN PROTEIN",
-            "WHEY PROTEIN ISOLATE", "LOW CARB PROTEIN", "PROTEIN RTD SHAKES",
-            "BCAA SUPPLEMENTS", "PLANT PROTEIN", "PRE-WORKOUT",
-            "MEAL REPLACEMENT", "KETOGENIC", "POST-WORKOUT RECOVERY",
-            "AMINO ACIDS", "CREATINE", "FISH OIL OMEGA-3", "PROTEIN BARS",
-            "GREENS"};
+
+
+
+    String[] arr = {
+            "Protein Powder",
+            "Creatine",
+            "Multivitamins",
+            "Fish Oil",
+            "Pre-Workout Supplements",
+            "Probiotics",
+            "Mass Gainers",
+            "Joint Support Supplements"
+    };
 
 
 
@@ -414,5 +570,14 @@ public class Scanner extends AppCompatActivity {
             }
             break;
         }
+    }
+
+    public static void showDialog(Context context, String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null); // You can add OnClickListener for positive button if needed
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
