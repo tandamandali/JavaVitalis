@@ -21,6 +21,30 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".FJointSupportSupplements"
+            android:exported="false" />
+        <activity
+            android:name=".FPreWorkout"
+            android:exported="false" />
+        <activity
+            android:name=".FProbiotics"
+            android:exported="false" />
+        <activity
+            android:name=".FMassGainers"
+            android:exported="false" />
+        <activity
+            android:name=".FMultivitamins"
+            android:exported="false" />
+        <activity
+            android:name=".FProtienPowder"
+            android:exported="false" />
+        <activity
+            android:name=".FCreatine"
+            android:exported="false" />
+        <activity
+            android:name=".FOutput"
+            android:exported="false" />
+        <activity
             android:name=".MMultivitamins"
             android:exported="true" />
         <activity
@@ -46,7 +70,7 @@
             android:exported="true" />
         <activity
             android:name=".BrandActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Scanner"
             android:exported="true" />
@@ -65,11 +89,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

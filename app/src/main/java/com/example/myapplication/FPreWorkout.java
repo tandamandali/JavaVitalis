@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MMassGainers extends AppCompatActivity {
+public class FPreWorkout extends AppCompatActivity {
 
     private List<Product> productList;
 
@@ -71,16 +71,16 @@ public class MMassGainers extends AppCompatActivity {
         };
 
         String[] preWorkoutSupplements = {
-                "Cellucor C4 Pre-Workout",
-                "Optimum Nutrition (ON) Pre-Workout Powder",
-                "Transparent Labs PreSeries Bulk",
-                "MusclePharm Assault Pre-Workout Powder",
-                "Bucked Up Pre-Workout Powder",
-                "Ghost Legend Pre-Workout",
-                "Kaged Muscle Pre-Kaged",
                 "BPI Sports 1.M.R. Pre-Workout",
+                "Kaged Muscle Pre-Kaged",
+                "Optimum Nutrition (ON) Pre-Workout Powder",
+                "GAT Nitraflex Pre-Workout",
+                "MusclePharm Assault Pre-Workout Powder",
+                "Transparent Labs PreSeries Bulk",
                 "Primeval Labs Prevail",
-                "GAT Nitraflex Pre-Workout"
+                "Ghost Legend Pre-Workout",
+                "Cellucor C4 Pre-Workout",
+                "Bucked Up Pre-Workout Powder"
         };
 
         String[] probiotics = {
@@ -175,13 +175,14 @@ public class MMassGainers extends AppCompatActivity {
                 8.0
         };
 
-        double[] prices = {1189, 2999, 3499, 3999, 3399, 2199, 6199, 5100, 2499, 4799};
+        double[] prices = {2469, 5908, 3999, 2799, 3726, 5922, 4199, 5099, 2199, 3099};
 
 
 
         for(int i=0;i<10;i++){
-            productList.add(new Product(massGainers[i], flavors[i], ratings[i], prices[i]));
+            productList.add(new Product(preWorkoutSupplements[i], flavors[i], ratings[i], prices[i]));
         }
+        // Add product details to the list (you can fetch this from somewhere else)
 
 
         // Add more products as needed
@@ -217,7 +218,7 @@ public class MMassGainers extends AppCompatActivity {
             productNameTextView.setTextSize(textSizePx);
 
             TextView categoryTextView = new TextView(this);
-            categoryTextView.setText("Category: " +"Mass Gainers");
+            categoryTextView.setText("Category: " +"Pre Workout Supplements");
 
             TextView flavourTextView = new TextView(this);
             flavourTextView.setText("Flavour: " + product.getFlavour());

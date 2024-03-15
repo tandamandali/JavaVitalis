@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MMassGainers extends AppCompatActivity {
+public class FMultivitamins extends AppCompatActivity {
 
     private List<Product> productList;
 
@@ -54,6 +54,19 @@ public class MMassGainers extends AppCompatActivity {
                 "Labrada Creata-Gain",
                 "Cellucor Cor-Performance Creatine",
                 "Scivation Xtend Creatine"
+        };
+
+        String[] multivitaminProducts = {
+                "Garden of Life Vitamin Code Raw One",
+                "Rainbow Light Men's One Daily Multivitamin",
+                "Centrum Adult Multivitamin",
+                "Schiff Move Free Adult Multivitamin",
+                "Kirkland Signature Nature Made Daily Multi for Men 50+",
+                "Alive! Men's 50+ Complete Multivitamin",
+                "Flintstones Vitamins",
+                "One A Day Men's Multivitamin",
+                "Nature Made Multi for Her",
+                "SmartyPants Daily Gummy Vitamins"
         };
 
 
@@ -175,12 +188,12 @@ public class MMassGainers extends AppCompatActivity {
                 8.0
         };
 
-        double[] prices = {1189, 2999, 3499, 3999, 3399, 2199, 6199, 5100, 2499, 4799};
+        double[] prices = {666, 3599, 3799, 2394, 3049, 1065, 3997, 3200, 3949, 5999};
 
 
 
         for(int i=0;i<10;i++){
-            productList.add(new Product(massGainers[i], flavors[i], ratings[i], prices[i]));
+            productList.add(new Product(multivitaminProducts[i], flavors[i], ratings[i], prices[i]));
         }
 
 
@@ -217,7 +230,7 @@ public class MMassGainers extends AppCompatActivity {
             productNameTextView.setTextSize(textSizePx);
 
             TextView categoryTextView = new TextView(this);
-            categoryTextView.setText("Category: " +"Mass Gainers");
+            categoryTextView.setText("Category: " + "Multivitamins");
 
             TextView flavourTextView = new TextView(this);
             flavourTextView.setText("Flavour: " + product.getFlavour());

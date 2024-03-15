@@ -3,7 +3,9 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -173,18 +175,7 @@ public class MProbiotics extends AppCompatActivity {
                 8.0
         };
 
-        double[] prices = {
-                2883.0,
-                2399.72,
-                1899.0,
-                999.0,
-                499.0,
-                1865.10,
-                2199.99,
-                1499.50,
-                799.0,
-                349.99
-        };
+        double[] prices = {2357, 4899, 3199, 4314, 3859, 1699, 1699, 7899, 1899, 4199};
 
 
 
@@ -225,6 +216,9 @@ public class MProbiotics extends AppCompatActivity {
             productNameTextView.setText("" + product.getName());
             productNameTextView.setTextSize(textSizePx);
 
+            TextView categoryTextView = new TextView(this);
+            categoryTextView.setText("Category: " +"Probiotics");
+
             TextView flavourTextView = new TextView(this);
             flavourTextView.setText("Flavour: " + product.getFlavour());
 
@@ -234,11 +228,23 @@ public class MProbiotics extends AppCompatActivity {
             TextView priceTextView = new TextView(this);
             priceTextView.setText("Price: ₹" + product.getPrice());
 
+            LinearLayout.LayoutParams layoutParamss = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParamss.setMargins(0, 0, 0, 0); // left, top, right, bottom
+
+
+            Button mb = new Button(this);
+            mb.setId(View.generateViewId());
+            mb.setText("Add to Cart");
+            mb.setLayoutParams(layoutParamss);
+
             // Add text views to the product layout
             productLayout.addView(productNameTextView);
+            productLayout.addView(categoryTextView);
             productLayout.addView(flavourTextView);
             productLayout.addView(ratingTextView);
             productLayout.addView(priceTextView);
+            productLayout.addView(mb);
 
             // Add product layout to the main layout
             mainLayout.addView(productLayout);

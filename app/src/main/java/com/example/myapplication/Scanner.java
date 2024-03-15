@@ -184,43 +184,43 @@ public class Scanner extends AppCompatActivity {
                                 // Code for Female gender
 
 
-//                                switch (category) {
-//                                    case "Protein Powder":
-//                                        Intent intent = new Intent(Scanner.this, ProtienPowder.class);
-//                                        startActivity(intent);
-//                                        break;
-//                                    case "Creatine":
-//                                        Intent cret = new Intent(Scanner.this, MCreatine.class);
-//                                        startActivity(cret);
-//                                        break;
-//                                    case "Multivitamins":
-//                                        Intent mul = new Intent(Scanner.this, MMultivitamins.class);
-//                                        startActivity(mul);
-//                                        break;
-//                                    case "Fish Oil":
-//                                        Intent out = new Intent(Scanner.this, Output.class);
-//                                        startActivity(out);
-//                                        break;
-//                                    case "Pre-Workout Supplements":
-//                                        Intent pre = new Intent(Scanner.this, MPreWorkout.class);
-//                                        startActivity(pre);
-//                                        break;
-//                                    case "Probiotics":
-//                                        Intent pro = new Intent(Scanner.this, MProbiotics.class);
-//                                        startActivity(pro);
-//                                        break;
-//                                    case "Mass Gainers":
-//                                        Intent mass = new Intent(Scanner.this, MMassGainers.class);
-//                                        startActivity(mass);
-//                                        break;
-//                                    case "Joint Support Supplements":
-//                                        Intent join = new Intent(Scanner.this, MJointSupportSupplements.class);
-//                                        startActivity(join);
-//                                        break;
-//                                    default:
-//                                        // Handle invalid category
-//                                        break;
-//                                }
+                                switch (category) {
+                                    case "Protein Powder":
+                                        Intent intent = new Intent(Scanner.this, FProtienPowder.class);
+                                        startActivity(intent);
+                                        break;
+                                    case "Creatine":
+                                        Intent cret = new Intent(Scanner.this, FCreatine.class);
+                                        startActivity(cret);
+                                        break;
+                                    case "Multivitamins":
+                                        Intent mul = new Intent(Scanner.this, FMultivitamins.class);
+                                        startActivity(mul);
+                                        break;
+                                    case "Fish Oil":
+                                        Intent out = new Intent(Scanner.this, FOutput.class);
+                                        startActivity(out);
+                                        break;
+                                    case "Pre-Workout Supplements":
+                                        Intent pre = new Intent(Scanner.this, FPreWorkout.class);
+                                        startActivity(pre);
+                                        break;
+                                    case "Probiotics":
+                                        Intent pro = new Intent(Scanner.this, FProbiotics.class);
+                                        startActivity(pro);
+                                        break;
+                                    case "Mass Gainers":
+                                        Intent mass = new Intent(Scanner.this, FMassGainers.class);
+                                        startActivity(mass);
+                                        break;
+                                    case "Joint Support Supplements":
+                                        Intent join = new Intent(Scanner.this, FJointSupportSupplements.class);
+                                        startActivity(join);
+                                        break;
+                                    default:
+                                        // Handle invalid category
+                                        break;
+                                }
 
                                 progressDialog.dismiss();
                                 break;

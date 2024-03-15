@@ -22,11 +22,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Register extends AppCompatActivity {
 
-    TextInputEditText editTextEmail, editTextpassword;
+    TextInputEditText editTextEmail, editTextpassword, user;
     Button buttonReg;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
+    String username = "Tanmay";
 
     @Override
     public void onStart() {
@@ -35,6 +36,7 @@ public class Register extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("username", username);
             startActivity(intent);
             finish();
 
@@ -51,11 +53,13 @@ public class Register extends AppCompatActivity {
         buttonReg = findViewById(R.id.btn_Register);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.loginNow);
+        user = findViewById(R.id.name);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Login.class);
+                intent.putExtra("username", username);
                 startActivity(intent);
                 finish();
             }
@@ -80,8 +84,10 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
+                                    username = String.valueOf(user.getText());
                                     Toast.makeText(Register.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), Login.class);
+                                    intent.putExtra("username", username);
                                     startActivity(intent);
                                     finish();
                                 } else {

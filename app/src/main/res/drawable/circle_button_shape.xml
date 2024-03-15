@@ -1,0 +1,4 @@
+<!-- circle_button_shape.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"><!-- Change colorPrimary to your desired color -->
+</shape>

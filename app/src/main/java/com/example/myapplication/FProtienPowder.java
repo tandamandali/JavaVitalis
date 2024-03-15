@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,16 +10,24 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MMassGainers extends AppCompatActivity {
+
+
+
+public class FProtienPowder extends AppCompatActivity {
 
     private List<Product> productList;
+    public Button add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_output);
 
         // Populate product details
@@ -31,16 +40,16 @@ public class MMassGainers extends AppCompatActivity {
     private void populateProductList() {
         productList = new ArrayList<>();
         String[] Protien_Powder = {
-                "Optimum Nutrition (ON) Gold Standard 100% Whey",
-                "MuscleTech NitroTech Whey Gold",
-                "Myprotein Impact Whey Protein",
-                "Isopure Zero Carb 100% Whey Protein Isolate",
-                "Transparent Labs Grass-Fed Whey Protein Isolate",
                 "Bulk Nutrients Whey Protein Concentrate",
-                "Ascent Native Fuel Whey Protein",
-                "RSP Quadrapure Isolate",
+                "Isopure Zero Carb 100% Whey Protein Isolate",
+                "Kaged Muscle Micropure Whey Protein Isolate",
+                "MuscleTech NitroTech Whey Gold",
+                "Optimum Nutrition (ON) Gold Standard 100% Whey",
                 "Legion Athletics Whey+",
-                "Kaged Muscle Micropure Whey Protein Isolate"
+                "Transparent Labs Grass-Fed Whey Protein Isolate",
+                "Myprotein Impact Whey Protein",
+                "Ascent Native Fuel Whey Protein",
+                "RSP Quadrapure Isolate"
         };
 
         String[] Creatine = {
@@ -175,18 +184,32 @@ public class MMassGainers extends AppCompatActivity {
                 8.0
         };
 
-        double[] prices = {1189, 2999, 3499, 3999, 3399, 2199, 6199, 5100, 2499, 4799};
+        double[] prices = {
+                2883.0,
+                2399.72,
+                1899.0,
+                999.0,
+                499.0,
+                1865.10,
+                2199.99,
+                1499.50,
+                799.0,
+                349.99
+        };
 
 
 
         for(int i=0;i<10;i++){
-            productList.add(new Product(massGainers[i], flavors[i], ratings[i], prices[i]));
+            productList.add(new Product(Protien_Powder[i], flavors[i], ratings[i], prices[i]));
         }
+        // Add product details to the list (you can fetch this from somewhere else)
 
 
         // Add more products as needed
 
     }
+
+
 
     private void createProductLayouts() {
         LinearLayout mainLayout = findViewById(R.id.main_layout);
@@ -196,6 +219,8 @@ public class MMassGainers extends AppCompatActivity {
         int marginPx = getResources().getDimensionPixelSize(R.dimen.product_layout_margin);
         int paddingPx = getResources().getDimensionPixelSize(R.dimen.product_layout_padding);
         int textSizePx = getResources().getDimensionPixelSize(R.dimen.product_name_text_size);
+
+
 
         for (Product product : productList) {
             // Create a new linear layout for each product
@@ -217,7 +242,7 @@ public class MMassGainers extends AppCompatActivity {
             productNameTextView.setTextSize(textSizePx);
 
             TextView categoryTextView = new TextView(this);
-            categoryTextView.setText("Category: " +"Mass Gainers");
+            categoryTextView.setText("Category: " +"Protein Powder");
 
             TextView flavourTextView = new TextView(this);
             flavourTextView.setText("Flavour: " + product.getFlavour());
@@ -249,7 +274,12 @@ public class MMassGainers extends AppCompatActivity {
             // Add product layout to the main layout
             mainLayout.addView(productLayout);
         }
+
+
     }
+
+
+
 
     // Class to represent product details
     private static class Product {
@@ -257,6 +287,8 @@ public class MMassGainers extends AppCompatActivity {
         private String flavour;
         private double rating;
         private double price;
+
+
 
         public Product(String name, String flavour, double rating, double price) {
             this.name = name;

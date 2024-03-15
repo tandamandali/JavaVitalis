@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MMassGainers extends AppCompatActivity {
+public class FOutput extends AppCompatActivity {
 
     private List<Product> productList;
 
@@ -58,17 +58,18 @@ public class MMassGainers extends AppCompatActivity {
 
 
         String[] fishOil = {
-                "Nordic Naturals Ultimate Omega D3",
                 "Carlson Labs Fish Oil Gems",
-                "Barleans Fine Oils Omega-3 Fish Oil",
-                "Nature Made Fish Oil",
-                "SmartyPants Omega-3 Fish Oil Gummy Vitamins",
-                "Schiff MegaRed Omega-3 Plus EPA & DHA",
-                "Twinlab Omega-3 Fish Oil Concentrate",
-                "Kirkland Signature Wild Alaskan Fish Oil",
                 "Wiley's Finest Wild Alaskan Fish Oil",
+                "Kirkland Signature Wild Alaskan Fish Oil",
+                "Nordic Naturals Ultimate Omega D3",
+                "SmartyPants Omega-3 Fish Oil Gummy Vitamins",
+                "Barleans Fine Oils Omega-3 Fish Oil",
+                "Schiff MegaRed Omega-3 Plus EPA & DHA",
+                "Nature Made Fish Oil",
+                "Twinlab Omega-3 Fish Oil Concentrate",
                 "AOR EPA/DHA Support"
         };
+
 
         String[] preWorkoutSupplements = {
                 "Cellucor C4 Pre-Workout",
@@ -175,13 +176,14 @@ public class MMassGainers extends AppCompatActivity {
                 8.0
         };
 
-        double[] prices = {1189, 2999, 3499, 3999, 3399, 2199, 6199, 5100, 2499, 4799};
+        double[] prices = {5999, 5783, 2299, 2799, 2999, 1459, 1499, 8499, 7792, 1062};
 
 
 
         for(int i=0;i<10;i++){
-            productList.add(new Product(massGainers[i], flavors[i], ratings[i], prices[i]));
+            productList.add(new Product(fishOil[i], flavors[i], ratings[i], prices[i]));
         }
+        // Add product details to the list (you can fetch this from somewhere else)
 
 
         // Add more products as needed
@@ -217,7 +219,7 @@ public class MMassGainers extends AppCompatActivity {
             productNameTextView.setTextSize(textSizePx);
 
             TextView categoryTextView = new TextView(this);
-            categoryTextView.setText("Category: " +"Mass Gainers");
+            categoryTextView.setText("Category: " +"Fish Oil");
 
             TextView flavourTextView = new TextView(this);
             flavourTextView.setText("Flavour: " + product.getFlavour());

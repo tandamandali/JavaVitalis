@@ -12,15 +12,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:layout_marginBottom="30dp"
+        >
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Recommendations :"
-            android:textSize="30dp" />
+            android:layout_marginTop="10dp"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/text_recommendations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recommendations :"
+                android:textSize="30dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="Cart"
+                app:icon="@drawable/baseline_add_shopping_cart_24"
+                android:layout_alignBottom="@id/text_recommendations"/>
+
+        </RelativeLayout>
+
+
+
     </LinearLayout>
 
 

@@ -3,7 +3,9 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -17,7 +19,7 @@ public class Output extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_output);
 
         // Populate product details
         populateProductList();
@@ -173,18 +175,7 @@ public class Output extends AppCompatActivity {
                 8.0
         };
 
-        double[] prices = {
-                2883.0,
-                2399.72,
-                1899.0,
-                999.0,
-                499.0,
-                1865.10,
-                2199.99,
-                1499.50,
-                799.0,
-                349.99
-        };
+        double[] prices = {5999, 5783, 2299, 2799, 2999, 1459, 1499, 8499, 7792, 1062};
 
 
 
@@ -192,9 +183,7 @@ public class Output extends AppCompatActivity {
             productList.add(new Product(fishOil[i], flavors[i], ratings[i], prices[i]));
         }
         // Add product details to the list (you can fetch this from somewhere else)
-        productList.add(new Product("Product A", "Flavour A", 4.5, 10.99));
-        productList.add(new Product("Product B", "Flavour B", 3.8, 8.99));
-        // Add more products as needed
+
 
         // Add more products as needed
 
@@ -228,6 +217,9 @@ public class Output extends AppCompatActivity {
             productNameTextView.setText("" + product.getName());
             productNameTextView.setTextSize(textSizePx);
 
+            TextView categoryTextView = new TextView(this);
+            categoryTextView.setText("Category: " +"Fish Oil");
+
             TextView flavourTextView = new TextView(this);
             flavourTextView.setText("Flavour: " + product.getFlavour());
 
@@ -237,11 +229,23 @@ public class Output extends AppCompatActivity {
             TextView priceTextView = new TextView(this);
             priceTextView.setText("Price: ₹" + product.getPrice());
 
+            LinearLayout.LayoutParams layoutParamss = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParamss.setMargins(0, 0, 0, 0); // left, top, right, bottom
+
+
+            Button mb = new Button(this);
+            mb.setId(View.generateViewId());
+            mb.setText("Add to Cart");
+            mb.setLayoutParams(layoutParamss);
+
             // Add text views to the product layout
             productLayout.addView(productNameTextView);
+            productLayout.addView(categoryTextView);
             productLayout.addView(flavourTextView);
             productLayout.addView(ratingTextView);
             productLayout.addView(priceTextView);
+            productLayout.addView(mb);
 
             // Add product layout to the main layout
             mainLayout.addView(productLayout);

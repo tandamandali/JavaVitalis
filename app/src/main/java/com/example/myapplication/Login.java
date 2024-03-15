@@ -21,11 +21,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
-    TextInputEditText editTextEmail, editTextpassword;
+    TextInputEditText editTextEmail, editTextpassword, user;
     Button buttonLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
+    private String username = "Tanmay";
+
 
     @Override
     public void onStart() {
@@ -34,6 +36,9 @@ public class Login extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+            intent.putExtra("username", username);
+
             startActivity(intent);
             finish();
 
@@ -50,6 +55,7 @@ public class Login extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btn_login);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.registerNow);
+        user = findViewById(R.id.name);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +73,7 @@ public class Login extends AppCompatActivity {
                 String email , password;
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextpassword.getText());
+                username = String.valueOf(user.getText());
 
                 if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
                     Toast.makeText(Login.this, "Enter email and password", Toast.LENGTH_SHORT).show();
@@ -80,9 +87,11 @@ public class Login extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
+
                                     Toast.makeText(Login.this, "Login Success.",
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    intent.putExtra("username", username);
                                     startActivity(intent);
                                     finish();
                                 } else {

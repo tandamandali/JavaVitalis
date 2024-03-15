@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MMassGainers extends AppCompatActivity {
+public class FMassGainers extends AppCompatActivity {
 
     private List<Product> productList;
 
@@ -97,16 +97,16 @@ public class MMassGainers extends AppCompatActivity {
         };
 
         String[] massGainers = {
-                "Optimum Nutrition (ON) Serious Mass Weight Gain Powder",
-                "MuscleTech Mass Gainer Powder",
-                "Bulk Nutrients Serious Mass Gain Powder",
                 "Myprotein Impact Weight Gainer",
-                "Kaged Muscle Gain Sweet Potato & Whey",
-                "Six Star Elite Whey Gainer Plus",
+                "Bulk Nutrients Serious Mass Gain Powder",
+                "Gaspari Nutrition SuperSize Mass Gainer",
+                "MuscleTech Mass Gainer Powder",
                 "Transparent Labs Bulk Nutrients",
-                "RSP TrueGain Weight Gain Powder",
+                "Kaged Muscle Gain Sweet Potato & Whey",
+                "Optimum Nutrition (ON) Serious Mass Weight Gain Powder",
                 "Beast Sports Nutrition TrueFit Gainer",
-                "Gaspari Nutrition SuperSize Mass Gainer"
+                "Six Star Elite Whey Gainer Plus",
+                "RSP TrueGain Weight Gain Powder"
         };
 
         String[] jointSupportSupplements = {

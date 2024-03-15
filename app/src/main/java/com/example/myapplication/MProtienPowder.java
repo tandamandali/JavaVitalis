@@ -1,22 +1,33 @@
 package com.example.myapplication;
 
+import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
+
 import java.util.ArrayList;
 import java.util.List;
+
+
+
 
 public class MProtienPowder extends AppCompatActivity {
 
     private List<Product> productList;
+    public Button add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_output);
 
         // Populate product details
@@ -192,13 +203,13 @@ public class MProtienPowder extends AppCompatActivity {
             productList.add(new Product(Protien_Powder[i], flavors[i], ratings[i], prices[i]));
         }
         // Add product details to the list (you can fetch this from somewhere else)
-        productList.add(new Product("Product A", "Flavour A", 4.5, 10.99));
-        productList.add(new Product("Product B", "Flavour B", 3.8, 8.99));
-        // Add more products as needed
+
 
         // Add more products as needed
 
     }
+
+
 
     private void createProductLayouts() {
         LinearLayout mainLayout = findViewById(R.id.main_layout);
@@ -208,6 +219,8 @@ public class MProtienPowder extends AppCompatActivity {
         int marginPx = getResources().getDimensionPixelSize(R.dimen.product_layout_margin);
         int paddingPx = getResources().getDimensionPixelSize(R.dimen.product_layout_padding);
         int textSizePx = getResources().getDimensionPixelSize(R.dimen.product_name_text_size);
+
+
 
         for (Product product : productList) {
             // Create a new linear layout for each product
@@ -228,6 +241,9 @@ public class MProtienPowder extends AppCompatActivity {
             productNameTextView.setText("" + product.getName());
             productNameTextView.setTextSize(textSizePx);
 
+            TextView categoryTextView = new TextView(this);
+            categoryTextView.setText("Category: " +"Protein Powder");
+
             TextView flavourTextView = new TextView(this);
             flavourTextView.setText("Flavour: " + product.getFlavour());
 
@@ -237,16 +253,33 @@ public class MProtienPowder extends AppCompatActivity {
             TextView priceTextView = new TextView(this);
             priceTextView.setText("Price: ₹" + product.getPrice());
 
+            LinearLayout.LayoutParams layoutParamss = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParamss.setMargins(0, 0, 0, 0); // left, top, right, bottom
+
+
+            Button mb = new Button(this);
+            mb.setId(View.generateViewId());
+            mb.setText("Add to Cart");
+            mb.setLayoutParams(layoutParamss);
+
             // Add text views to the product layout
             productLayout.addView(productNameTextView);
+            productLayout.addView(categoryTextView);
             productLayout.addView(flavourTextView);
             productLayout.addView(ratingTextView);
             productLayout.addView(priceTextView);
+            productLayout.addView(mb);
 
             // Add product layout to the main layout
             mainLayout.addView(productLayout);
         }
+
+
     }
+
+
+
 
     // Class to represent product details
     private static class Product {
@@ -254,6 +287,8 @@ public class MProtienPowder extends AppCompatActivity {
         private String flavour;
         private double rating;
         private double price;
+
+
 
         public Product(String name, String flavour, double rating, double price) {
             this.name = name;

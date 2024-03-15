@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MMassGainers extends AppCompatActivity {
+public class FProbiotics extends AppCompatActivity {
 
     private List<Product> productList;
 
@@ -84,16 +84,16 @@ public class MMassGainers extends AppCompatActivity {
         };
 
         String[] probiotics = {
-                "Culturelle Daily Probiotic Capsules",
-                "Align Probiotic Supplement",
-                "Benefiber Prebiotic Chewable Tablets",
-                "Nexabiotic Complete Probiotic Capsules",
                 "Florastor Live Bacteria Capsules",
-                "RepHresh Pro-B Probiotic Supplement",
-                "Align Ester-C Probiotic Blend",
                 "Garden of Life RAW Probiotics Ultimate Care",
+                "Thorne Bifidobacterium GG",
+                "Align Ester-C Probiotic Blend",
+                "Benefiber Prebiotic Chewable Tablets",
                 "Bio-K+ Probiotics Chewable Tablets",
-                "Thorne Bifidobacterium GG"
+                "RepHresh Pro-B Probiotic Supplement",
+                "Culturelle Daily Probiotic Capsules",
+                "Nexabiotic Complete Probiotic Capsules",
+                "Align Probiotic Supplement"
         };
 
         String[] massGainers = {
@@ -175,12 +175,12 @@ public class MMassGainers extends AppCompatActivity {
                 8.0
         };
 
-        double[] prices = {1189, 2999, 3499, 3999, 3399, 2199, 6199, 5100, 2499, 4799};
+        double[] prices = {2357, 4899, 3199, 4314, 3859, 1699, 1699, 7899, 1899, 4199};
 
 
 
         for(int i=0;i<10;i++){
-            productList.add(new Product(massGainers[i], flavors[i], ratings[i], prices[i]));
+            productList.add(new Product(probiotics[i], flavors[i], ratings[i], prices[i]));
         }
 
 
@@ -217,7 +217,7 @@ public class MMassGainers extends AppCompatActivity {
             productNameTextView.setTextSize(textSizePx);
 
             TextView categoryTextView = new TextView(this);
-            categoryTextView.setText("Category: " +"Mass Gainers");
+            categoryTextView.setText("Category: " +"Probiotics");
 
             TextView flavourTextView = new TextView(this);
             flavourTextView.setText("Flavour: " + product.getFlavour());

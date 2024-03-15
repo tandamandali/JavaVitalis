@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MMassGainers extends AppCompatActivity {
+public class FJointSupportSupplements extends AppCompatActivity {
 
     private List<Product> productList;
 
@@ -110,16 +110,16 @@ public class MMassGainers extends AppCompatActivity {
         };
 
         String[] jointSupportSupplements = {
-                "glucosamine and chondroitin (various brands)",
-                "Osteo Bi-Flex Triple Strength",
                 "Nature Made Glucosamine Chondroitin MSM",
-                "Schiff Move Free Ultra New Formula",
-                "Kirkland Signature Glucosamine Chondroitin MSM with Hyaluronic Acid",
                 "Puritan's Pride Glucosamine Chondroitin MSM with Hyaluronic Acid",
-                "Doctor's Best Glucosamine Chondroitin MSM with OptiMSM",
-                "Hyland's Glucosamine Chondroitin MSM with Turmeric",
                 "Now Foods Glucosamine Chondroitin MSM with Boswellia",
-                "Solaray Glucosamine Chondroitin MSM with OptiMSM & Hyaluronic Acid"
+                "Kirkland Signature Glucosamine Chondroitin MSM with Hyaluronic Acid",
+                "Hyland's Glucosamine Chondroitin MSM with Turmeric",
+                "Doctor's Best Glucosamine Chondroitin MSM with OptiMSM",
+                "Schiff Move Free Ultra New Formula",
+                "Solaray Glucosamine Chondroitin MSM with OptiMSM & Hyaluronic Acid",
+                "glucosamine and chondroitin (various brands)",
+                "Osteo Bi-Flex Triple Strength"
         };
 
         String[] fiberSupplements = {
@@ -175,12 +175,12 @@ public class MMassGainers extends AppCompatActivity {
                 8.0
         };
 
-        double[] prices = {1189, 2999, 3499, 3999, 3399, 2199, 6199, 5100, 2499, 4799};
+        double[] prices = {2453, 4398, 1599, 3200, 2377, 4100, 1642, 1899, 4291, 1499};
 
 
 
         for(int i=0;i<10;i++){
-            productList.add(new Product(massGainers[i], flavors[i], ratings[i], prices[i]));
+            productList.add(new Product(jointSupportSupplements[i], flavors[i], ratings[i], prices[i]));
         }
 
 
@@ -217,7 +217,7 @@ public class MMassGainers extends AppCompatActivity {
             productNameTextView.setTextSize(textSizePx);
 
             TextView categoryTextView = new TextView(this);
-            categoryTextView.setText("Category: " +"Mass Gainers");
+            categoryTextView.setText("Category: " +"Joint Support Supplements");
 
             TextView flavourTextView = new TextView(this);
             flavourTextView.setText("Flavour: " + product.getFlavour());
